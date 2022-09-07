@@ -1,0 +1,67 @@
+import java.util.*;
+import java.util.Scanner;
+
+public class Zaruri {
+    public static void main(String[] args) {
+        System.out.println("\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tBun venit la jocul meu cu zaruri!");
+        System.out.println("\tDoresti sa arunci cu zarul?\nDa/nu");
+        Scanner sc = new Scanner(System.in);
+        String raspuns = sc.next().toLowerCase(Locale.ROOT);
+        if (raspuns.equals("da")) {
+            System.out.println("Ok, vom arunca cu zarul: ");
+            startGame();
+        } else {
+            System.out.println("Bine, te mai asteptam altadata!");
+        }
+    }
+
+    public static void startGame() {
+        Scanner sc2 = new Scanner(System.in);
+        Random rd = new Random();
+        int victoriileMele = 0;
+        int pierzaniileMele = 0;
+        while (true) {
+            int zar1 = rd.nextInt(5) + 1;
+            int zar2 = rd.nextInt(5) + 1;
+            int zarulMeu1 = rd.nextInt(5) + 1;
+            int zarulMeu2 = rd.nextInt(5) + 1;
+
+            if ((zar1 + zar2) > (zarulMeu1 + zarulMeu2)) {
+                pierzaniileMele++;
+                System.out.println("Ai pierdut. Calculatorul a dat " + zar1 + " " + zar2 + " iar tu ai dat " + zarulMeu1 + " " + zarulMeu2 + "\t\t\nScorul este:");
+                System.out.println("\t\t\tCalculator  " + pierzaniileMele + " Jucator  " + victoriileMele);
+
+            }
+
+            else if ((zar1 + zar2) == (zarulMeu1 + zarulMeu2)) {
+                System.out.println("Este remiza. Calculatorul a dat " + zar1 + " " + zar2 + " iar tu ai dat " + zarulMeu1 + " " + zarulMeu2 + "\t\t\nScorul este:");
+                System.out.println("\t\t\tCalculator  " + pierzaniileMele + " Jucator  " + victoriileMele);
+
+            }
+
+            else {
+                victoriileMele++;
+                System.out.println("Ai castigat. Calculatorul a dat " + zar1 + " " + zar2 + " iar tu ai dat " + zarulMeu1 + " " + zarulMeu2 + "\t\t\nScorul este:");
+                System.out.println("\t\t\tCalculator  " + pierzaniileMele + " Jucator  " + victoriileMele);
+
+            }
+
+            if (victoriileMele == 6) {
+                System.out.println("S-a terminat jocul! Felicitari, ai castigat!");
+                break;
+            }
+
+            else if (pierzaniileMele == 6) {
+                System.out.println("S-a terminat jocul! Ne pare rau, ai pierdut!");
+                break;
+            }
+                System.out.println("Doresti sa continui? Jocul va merge pana cand unul dintre voi ajunge la 6 \n\t\tDa / Nu");
+                String raspuns2 = sc2.nextLine().toLowerCase(Locale.ROOT);
+                if(raspuns2.equals("da")){
+                    continue;
+                } else{
+                    break;
+                }
+            }
+        }
+    }
